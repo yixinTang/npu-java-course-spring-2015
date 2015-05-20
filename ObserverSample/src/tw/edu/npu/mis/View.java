@@ -40,9 +40,9 @@ public class View {
     }
 
     /**
-     * Invalid the view, which indicates it needs re-show.
+     * Invalidate the view, which indicates it needs re-show.
      */
-    public void invalid() {
+    public void invalidate() {
         mIsValid = false;
     }
 

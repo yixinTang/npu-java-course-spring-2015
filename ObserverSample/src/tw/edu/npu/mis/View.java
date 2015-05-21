@@ -32,36 +32,28 @@ package tw.edu.npu.mis;
  */
 public class View {
 
+    private final String mName;
+    private final Window mWindow;
     private final Model mModel;
-    private boolean mIsValid;
 
-    public View(Model model) {
+    public View(String name, Window window, Model model) {
+        mName = name;
+        mWindow = window;
         mModel = model;
     }
 
     /**
-     * Invalidate the view, which indicates it needs re-show.
+     * Invalidate the view, which indicates it needs to be redrawn later.
      */
     public void invalidate() {
-        mIsValid = false;
-    }
-
-    /**
-     * Check if the view is still valid.
-     *
-     * @return {@code true} if it is.
-     */
-    public boolean isValid() {
-        return mIsValid;
+        mWindow.schduleRedraw(this);
     }
 
     /**
      * Show the content of the model on the console.
      */
-    public void show() {
-        System.out.print("View: ");
-        System.out.println(mModel.getData());
-        mIsValid = true;
+    public void onDraw() {
+        System.out.println("View (" + mName + "): " + mModel.getData());
     }
 
 }

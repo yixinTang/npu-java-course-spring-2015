@@ -44,6 +44,11 @@ public class Calculator {
     public void performOperation(Operator operator) {
         // TODO code application logic here
     }
+    
+    public String getDisplay() {
+        // TODO code application logic here
+        return null;
+    }
 
     /**
      * @param args the command line arguments

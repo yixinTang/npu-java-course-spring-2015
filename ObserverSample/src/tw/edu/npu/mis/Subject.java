@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Samael Wang <freesamael@gmail.com>
+ * Copyright (c) 2015, STP
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,24 +29,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simulation of a GUI application.
  *
- * @author Samael Wang <freesamael@gmail.com>
+ * @author STP
  */
-public class ObserverSample {
-
-    public static void main(String[] args) {
-        // Initialize MVC and Window objects.
-        Window window = new Window();
-        Model model = new Model();
-        Controller controller = new Controller(model);
-        List<View> views = new ArrayList<>();
-        views.add(new View("View 1", window, model));
-        views.add(new View("View 2", window, model));
-        views.add(new View("View 3", window, model));
-        views.add(new AlternativeView("View 4", window, model));
-
-        // Start the event loop.
-        window.startEventLoop(controller, views);
+public class Subject {
+    
+    private List<Observer> ObList = new ArrayList<Observer>(); 
+   
+    /**
+     * Register Attacach.
+     * @param mObserver 
+     */
+    public void Attcach(Observer mObserver)        
+    {
+        ObList.add(mObserver);    
+    }
+    /**
+     * cancel Detach.
+     * @param mObserver 
+     */
+    public void Detach(Observer mObserver)
+    {
+        ObList.remove(mObserver);
+    }
+    /**
+     * notify Observer View is change.
+     */
+    public void Notify()
+    {
+        for(Observer Ob :ObList){
+            Ob.Update();
+        }
     }
 }

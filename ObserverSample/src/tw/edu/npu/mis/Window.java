@@ -46,7 +46,7 @@ public class Window {
      */
     public void startEventLoop(Controller c, List<View> views) {
         mController = c;
-        mInvalidViews = new ArrayList<>(views);
+        mInvalidViews = new ArrayList<>();
 
         // Simulate how an event loop works.
         while (true) {

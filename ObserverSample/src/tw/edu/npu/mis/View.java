@@ -30,16 +30,17 @@ package tw.edu.npu.mis;
  *
  * @author Samael Wang <freesamael@gmail.com>
  */
-public class View {
+public class View implements Observer{
 
-    private final String mName;
-    private final Window mWindow;
-    private final Model mModel;
+    protected final String mName;
+    protected final Window mWindow;
+    protected final Model mModel;
 
     public View(String name, Window window, Model model) {
         mName = name;
         mWindow = window;
         mModel = model;
+        mModel.Attcach(this);
     }
 
     /**
@@ -54,6 +55,11 @@ public class View {
      */
     public void onDraw() {
         System.out.println("View (" + mName + "): " + mModel.getData());
+    }
+
+    @Override
+    public void Update() {
+        invalidate();
     }
 
 }
